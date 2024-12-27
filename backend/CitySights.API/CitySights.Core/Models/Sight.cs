@@ -10,7 +10,7 @@ namespace CitySights.Core.Models
             Guid id,
             string name,
             string description,
-            Image? image,
+            Image image,
             List<Review>? reviews)
         {
             Id = id;
@@ -23,11 +23,11 @@ namespace CitySights.Core.Models
         public Guid Id { get; }
         public string Name { get; }
         public string Description { get; }
-        public Image? Image { get; }
+        public Image Image { get; }
         public IReadOnlyCollection<Review>? Reviews => _reviews;
 
         public static Result<Sight> Create (Guid id, string name,
-            string description, Image? image, List<Review>? reviews)
+            string description, Image image, List<Review>? reviews)
         {
             if(string.IsNullOrWhiteSpace(name) || name.Length > Review.MAX_TITLE_LENGTH)
             {

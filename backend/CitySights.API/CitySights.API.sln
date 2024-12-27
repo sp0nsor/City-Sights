@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CitySights.API", "CitySight
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CitySights.Core", "CitySights.Core\CitySights.Core.csproj", "{4A796F8D-BCC2-4CAA-A224-39B9D6D1D430}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CitySights.DataAccess", "CitySights.DataAccess\CitySights.DataAccess.csproj", "{681B8B47-D85F-4F93-9F6A-E1E87DD21F86}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{4A796F8D-BCC2-4CAA-A224-39B9D6D1D430}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A796F8D-BCC2-4CAA-A224-39B9D6D1D430}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A796F8D-BCC2-4CAA-A224-39B9D6D1D430}.Release|Any CPU.Build.0 = Release|Any CPU
+		{681B8B47-D85F-4F93-9F6A-E1E87DD21F86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{681B8B47-D85F-4F93-9F6A-E1E87DD21F86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{681B8B47-D85F-4F93-9F6A-E1E87DD21F86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{681B8B47-D85F-4F93-9F6A-E1E87DD21F86}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
