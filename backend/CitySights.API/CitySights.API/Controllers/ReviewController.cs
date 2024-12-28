@@ -10,15 +10,15 @@ namespace CitySights.API.Controllers
     [Route("[controller]")]
     public class ReviewController : ControllerBase
     {
-        private readonly IReviewSrvice reviewSrvice;
+        private readonly IReviewSrvice reviewService;
 
-        public ReviewController(IReviewSrvice reviewSrvice)
+        public ReviewController(IReviewSrvice reviewService)
         {
-            this.reviewSrvice = reviewSrvice;
+            this.reviewService = reviewService;
         }
 
         [HttpPost]
-        public async Task<ActionResult> CreateReview(ReviewRequest request)
+        public async Task<ActionResult> CreateReview([FromBody] ReviewRequest request)
         {
             var reviewResult = Review.Create(
                 Guid.NewGuid(),
@@ -32,14 +32,54 @@ namespace CitySights.API.Controllers
                 return BadRequest(reviewResult.Error);
             }
 
-            var responseResult = await reviewSrvice.CreateReview(reviewResult.Value);
+            var result = await reviewService.CreateReview(reviewResult.Value);
 
-            if(responseResult.IsFailure)
+            if(result.IsFailure)
             {
-                return BadRequest(responseResult.Error);
+                return BadRequest(result.Error);
             }
 
-            return Ok(responseResult.Value);
+            return Ok(result.Value);
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> GetReviews([FromQuery] Guid id)
+        {
+            var result = await reviewService.GetReviews(id);
+
+            if (result.IsFailure)
+            {
+                return BadRequest(result.Error);
+            }
+
+            return Ok(result.Value);
+        }
+
+        [HttpPut]
+        public async Task<ActionResult> UpdateReview(
+            [FromQuery] Guid id, string title, string reviewText, int rating)
+        {
+            var result = await reviewService.UpdateReview(id, title, reviewText, rating);
+
+            if (result.IsFailure)
+            {
+                return BadRequest(result.Error);
+            }
+
+            return Ok();
+        }
+
+        [HttpDelete]
+        public async Task<ActionResult> DeleteReview([FromQuery] Guid id)
+        {
+            var result = await reviewService.DeleteReview(id);
+
+            if(result.IsFailure)
+            {
+                return BadRequest(result.Error);
+            }
+
+            return Ok();
         }
     }
 }

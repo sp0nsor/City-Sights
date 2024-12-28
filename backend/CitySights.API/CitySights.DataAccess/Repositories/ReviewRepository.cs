@@ -30,9 +30,10 @@ namespace CitySights.DataAccess.Repositories
         {
             var reviewEntity = await context.Reviews
                 .AsNoTracking()
-                .Where(r =>  r.Id == sightId)
+                .Where(r =>  r.SightId == sightId)
                 .ToListAsync();
 
+            Console.WriteLine(reviewEntity.Count);
             return mapper.Map<List<Review>>(reviewEntity);
         }
 

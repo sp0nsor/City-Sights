@@ -16,7 +16,6 @@ builder.Services.AddScoped<ISightService, SightService>();
 builder.Services.AddScoped<ISightRepository, SightRepository>();
 
 builder.Services.AddScoped<IImageService, ImageService>();
-builder.Services.AddScoped<IImageRepository, ImageRepository>();
 
 builder.Services.AddScoped<IReviewRepository, ReviewRepository>();
 builder.Services.AddScoped<IReviewSrvice, ReviewSrvice>();

@@ -7,13 +7,6 @@ namespace CitySights.Application.Services
 {
     public class ImageService : IImageService
     {
-        private readonly IImageRepository imageRepository;
-
-        public ImageService(IImageRepository imageRepository)
-        {
-            this.imageRepository = imageRepository;
-        }
-
         public async Task<Result<Image>> CreateImage(IFormFile titleImage, string path)
         {
             try
