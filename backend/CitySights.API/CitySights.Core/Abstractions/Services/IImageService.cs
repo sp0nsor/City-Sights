@@ -7,5 +7,6 @@ namespace CitySights.Application.Services
     public interface IImageService
     {
         Task<Result<Image>> CreateImage(IFormFile titleImage, string path);
+        Task<Result<string>> GetImageAsBase64(string filePath);
     }
 }

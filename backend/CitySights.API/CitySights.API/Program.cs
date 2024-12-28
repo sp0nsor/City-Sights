@@ -34,6 +34,14 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors(policy =>
+{
+    policy.WithOrigins("http://localhost:5173")
+          .AllowCredentials()
+          .AllowAnyHeader()
+          .AllowAnyMethod();
+});
+
 app.UseAuthorization();
 
 app.MapControllers();

@@ -29,5 +29,24 @@ namespace CitySights.Application.Services
                 return Result.Failure<Image>(ex.Message);
             }
         }
+        
+        public async Task<Result<string>> GetImageAsBase64(string filePath)
+        {
+            try
+            {
+                if (!File.Exists(filePath))
+                {
+                    return Result.Failure<string>("File not found");
+                }
+
+                byte[] bytes = await File.ReadAllBytesAsync(filePath);
+
+                return Result.Success(Convert.ToBase64String(bytes));
+            }
+            catch(Exception ex)
+            {
+                return Result.Failure<string>(ex.Message); 
+            }
+        }
     }
 }

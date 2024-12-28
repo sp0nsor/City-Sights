@@ -54,18 +54,23 @@ namespace CitySights.API.Controllers
         {
             var sightResult = await sightService.GetSights();
 
-            var sightResponse = sightResult.Value.Select(s => 
-                new SightResponse(
-                    s.Name,
-                    s.Description,
-                    s.Image.FileName,
-                    s.Reviews?.Select(r =>
-                        new ReviewResponse(
-                            r.Title,
-                            r.ReviewText,
-                            r.Rating))
-                    .ToList()))
-                .ToList();
+            if (sightResult.IsFailure)
+                return BadRequest(sightResult.Error);
+
+            var sightResponse = await Task.WhenAll(sightResult.Value.Select(async sight =>
+            {
+                var imageBase64 = !string.IsNullOrEmpty(sight.Image.FileName)
+                    ? (await imageService.GetImageAsBase64(sight.Image.FileName)).GetValueOrDefault()
+                    : null;
+
+                return new SightResponse(
+                    sight.Id,
+                    sight.Name,
+                    sight.Description,
+                    imageBase64,
+                    sight.Reviews?.Select(r => new ReviewResponse(r.Id, r.Title, r.ReviewText, r.Rating)).ToList()
+                );
+            }));
 
             return Ok(sightResponse);
         }
@@ -78,7 +83,7 @@ namespace CitySights.API.Controllers
                 return BadRequest();
             }
 
-            sightService.UpdateSight(id, request.Name, request.Description);
+            await sightService.UpdateSight(id, request.Name, request.Description);
 
             return Ok();
         }
