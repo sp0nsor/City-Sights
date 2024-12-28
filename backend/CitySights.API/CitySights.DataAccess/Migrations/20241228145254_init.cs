@@ -52,23 +52,23 @@ namespace CitySights.DataAccess.Migrations
                     SightId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ReviewText = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Rating = table.Column<int>(type: "int", nullable: false),
-                    SightEntityId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    Rating = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Reviews", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Reviews_Sights_SightEntityId",
-                        column: x => x.SightEntityId,
+                        name: "FK_Reviews_Sights_SightId",
+                        column: x => x.SightId,
                         principalTable: "Sights",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Reviews_SightEntityId",
+                name: "IX_Reviews_SightId",
                 table: "Reviews",
-                column: "SightEntityId");
+                column: "SightId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Sights_ImageId",

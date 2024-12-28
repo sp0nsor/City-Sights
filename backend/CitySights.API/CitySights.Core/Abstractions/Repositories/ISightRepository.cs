@@ -7,6 +7,6 @@ namespace CitySights.DataAccess.Repositories
         Task<Guid> Create(Sight sight);
         Task Delete(Guid id);
         Task<List<Sight>> Get();
-        Task Update(Sight updatedSight);
+        Task Update(Guid id, string name, string description);
     }
 }

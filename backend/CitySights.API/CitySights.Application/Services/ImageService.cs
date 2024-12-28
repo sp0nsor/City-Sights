@@ -18,7 +18,8 @@ namespace CitySights.Application.Services
         {
             try
             {
-                var fileName = Path.GetFileName(titleImage.Name);
+                var fileName = Path.GetFileName(titleImage.FileName);
+                Console.WriteLine(titleImage.FileName);
                 var filePath = Path.Combine(path, fileName);
 
                 await using (var stream = new FileStream(filePath, FileMode.Create))
@@ -27,8 +28,6 @@ namespace CitySights.Application.Services
                 }
 
                 var image = Image.Create(Guid.NewGuid(), Guid.NewGuid(), filePath);
-
-                //await imageRepository.Create(image.Value);
 
                 return image;
             }

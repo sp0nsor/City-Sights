@@ -21,8 +21,8 @@ namespace CitySights.DataAccess.Configurations
                 .HasForeignKey<ImageEntity>(i => i.SightId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            builder.HasMany(r => r.reviews)
-                .WithOne()
+            builder.HasMany(s => s.Reviews)
+                .WithOne(r => r.Sight)
                 .HasForeignKey(r => r.SightId)
                 .OnDelete(DeleteBehavior.Cascade);
         }

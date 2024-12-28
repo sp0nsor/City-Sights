@@ -8,6 +8,6 @@ namespace CitySights.Application.Services
         Task<Result<Guid>> CreateSight(Sight sight);
         Task<Result> DeleteSight(Guid id);
         Task<Result<List<Sight>>> GetSights();
-        Task<Result> UpdateSight(Sight sight);
+        Task<Result> UpdateSight(Guid id, string name, string description);
     }
 }

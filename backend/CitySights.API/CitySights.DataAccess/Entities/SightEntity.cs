@@ -6,6 +6,6 @@
         public string Name { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
         public ImageEntity Image { get; set; } = null;
-        public ICollection<ReviewEntity> reviews { get; set; } = [];
+        public ICollection<ReviewEntity> Reviews { get; set; } = [];
     }
 }

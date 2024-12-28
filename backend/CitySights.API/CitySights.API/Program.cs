@@ -13,11 +13,13 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<ISightService, SightService>();
-builder.Services.AddScoped<IImageService, ImageService>();
-
 builder.Services.AddScoped<ISightRepository, SightRepository>();
+
+builder.Services.AddScoped<IImageService, ImageService>();
 builder.Services.AddScoped<IImageRepository, ImageRepository>();
-//builder.Services.AddScoped<IReviewRepository, ReviewRepository>();
+
+builder.Services.AddScoped<IReviewRepository, ReviewRepository>();
+builder.Services.AddScoped<IReviewSrvice, ReviewSrvice>();
 
 builder.Services.AddDbContext<CitySightDbContext>(
     options =>

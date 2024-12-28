@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CitySights.DataAccess.Repositories
 {
-    public class ReviewRepository
+    public class ReviewRepository : IReviewRepository
     {
         private readonly CitySightDbContext context;
         private readonly IMapper mapper;

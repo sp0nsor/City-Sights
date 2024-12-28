@@ -40,36 +40,6 @@ namespace CitySights.DataAccess.Migrations
                     b.ToTable("Images");
                 });
 
-            modelBuilder.Entity("CitySights.DataAccess.Entities.ReviewEntity", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("Rating")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ReviewText")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid?>("SightEntityId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("SightId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SightEntityId");
-
-                    b.ToTable("Reviews");
-                });
-
             modelBuilder.Entity("CitySights.DataAccess.Entities.SightEntity", b =>
                 {
                     b.Property<Guid>("Id")
@@ -94,11 +64,31 @@ namespace CitySights.DataAccess.Migrations
                     b.ToTable("Sights");
                 });
 
-            modelBuilder.Entity("CitySights.DataAccess.Entities.ReviewEntity", b =>
+            modelBuilder.Entity("ReviewEntity", b =>
                 {
-                    b.HasOne("CitySights.DataAccess.Entities.SightEntity", null)
-                        .WithMany("reviews")
-                        .HasForeignKey("SightEntityId");
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Rating")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ReviewText")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("SightId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SightId");
+
+                    b.ToTable("Reviews");
                 });
 
             modelBuilder.Entity("CitySights.DataAccess.Entities.SightEntity", b =>
@@ -112,9 +102,20 @@ namespace CitySights.DataAccess.Migrations
                     b.Navigation("Image");
                 });
 
+            modelBuilder.Entity("ReviewEntity", b =>
+                {
+                    b.HasOne("CitySights.DataAccess.Entities.SightEntity", "Sight")
+                        .WithMany("Reviews")
+                        .HasForeignKey("SightId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Sight");
+                });
+
             modelBuilder.Entity("CitySights.DataAccess.Entities.SightEntity", b =>
                 {
-                    b.Navigation("reviews");
+                    b.Navigation("Reviews");
                 });
 #pragma warning restore 612, 618
         }

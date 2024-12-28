@@ -19,8 +19,8 @@ namespace CitySights.DataAccess.Configurations
             builder.Property(r => r.Rating)
                 .IsRequired();
 
-            builder.HasOne<SightEntity>()
-                .WithMany(s => s.reviews)
+            builder.HasOne(r => r.Sight)
+                .WithMany(s => s.Reviews)
                 .HasForeignKey(r => r.SightId)
                 .OnDelete(DeleteBehavior.Cascade);
         }

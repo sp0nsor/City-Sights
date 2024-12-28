@@ -9,8 +9,13 @@ namespace CitySights.DataAccess.Mappings
         public DataBaseMappings()
         {
             CreateMap<Image, ImageEntity>();
+            CreateMap<ImageEntity, Image>();
+
+            CreateMap<ReviewEntity, Review>();
             CreateMap<Review, ReviewEntity>();
+
             CreateMap<Sight, SightEntity>();
+            CreateMap<SightEntity, Sight>();
         }
     }
 }

@@ -41,11 +41,11 @@ namespace CitySights.Application.Services
             }
         }
 
-        public async Task<Result> UpdateSight(Sight sight)
+        public async Task<Result> UpdateSight(Guid id, string name, string description)
         {
             try
             {
-                await sightRepository.Update(sight);
+                await sightRepository.Update(id, name, description);
 
                 return Result.Success();
             }
