@@ -35,18 +35,9 @@ namespace CitySights.DataAccess.Repositories
             return mapper.Map<List<Sight>>(sightEntities);
         }
 
-        public async Task<Sight?> GetById(Guid id)
+        public async Task Update(Sight updatedSight)
         {
-            var sightEntity = await context.Sights
-                .AsNoTracking()
-                .FirstOrDefaultAsync(s => s.Id == id);
-
-            return mapper.Map<Sight>(sightEntity);
-        }
-
-        public async Task Update(Guid id, Sight updatedSight)
-        {
-            var sightEntity = await context.Sights.FindAsync(id);
+            var sightEntity = await context.Sights.FindAsync(updatedSight.Id);
             if (sightEntity == null)
             {
                 throw new KeyNotFoundException("Sight not found");

@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace CitySights.DataAccess
+namespace CitySights.DataAccess.Configurations
 {
     public class SightEntityConfiguration : IEntityTypeConfiguration<SightEntity>
     {

@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CitySights.Core", "CitySigh
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CitySights.DataAccess", "CitySights.DataAccess\CitySights.DataAccess.csproj", "{681B8B47-D85F-4F93-9F6A-E1E87DD21F86}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CitySights.Application", "CitySights.Application\CitySights.Application.csproj", "{CBC432A3-616B-4B28-88A4-8AB979558FD1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{681B8B47-D85F-4F93-9F6A-E1E87DD21F86}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{681B8B47-D85F-4F93-9F6A-E1E87DD21F86}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{681B8B47-D85F-4F93-9F6A-E1E87DD21F86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBC432A3-616B-4B28-88A4-8AB979558FD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBC432A3-616B-4B28-88A4-8AB979558FD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBC432A3-616B-4B28-88A4-8AB979558FD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBC432A3-616B-4B28-88A4-8AB979558FD1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
